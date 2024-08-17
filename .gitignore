@@ -1,2 +1,79 @@
-# Игнорировать файлы с расширением .log
+# Ignore virtual environments
+venv/
+ENV/
+env/
+.venv/
+
+# IDE-specific configuration files (e.g., PyCharm or VSCode)
+.idea/
+.vscode/
+
+# Log and debug files
 *.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.sqlite3
+
+# pip cache files
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Cache directories and temporary files
+*.cache
+*.tmp
+*.bak
+*.swp
+
+# Libraries and dependencies
+*.egg-info/
+.eggs/
+dist/
+build/
+*.egg
+*.wheel
+
+# Environment files
+.env
+.env.*
+
+# Test coverage files (e.g., coverage reports)
+htmlcov/
+.tox/
+.coverage
+.cache
+.pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Build artifacts
+*.spec
+*.exe
+*.dll
+*.so
+*.dylib
+.DS_Store  # for macOS
+
+# Test results and logs
+test-results/
+*.test
+*.log
+results/
+
+# Profiling files
+*.prof
+.prof/
+
+# APIs
+api_links.txt
+api_links.json
+
+# Requests
+POST_payload_create.json
+
