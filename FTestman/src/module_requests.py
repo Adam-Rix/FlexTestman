@@ -23,30 +23,53 @@ def get_link(server_name,
     else:
         return None
 
-def load_data_payload(file_path):
-    with open(file_path, 'r', encoding='utf-8') as file:
-        return json.load(file)
+def load_data_payload(payload):
+    return json.loads(payload) if payload else {}
 
 def load_header(file_path):
-    with open(file_path, 'r', encoding='utf-8') as file:
-        return json.load(file)
+    if file_path:
+        with open(file_path, 'r', encoding='utf-8') as file:
+            return json.load(file)
+    return {}
 
 # send the request ## params is smth add for url about ?key1=value1&key2=value2 or something similar
-def send_request(api_url,
-                 payload_path,
-                 header_path,
-                 retries=3):
+def send_request(api_url, payload=None, payload_path=None, header_path=None, request_type='POST', retries=3):
 
     for attempt in range(retries):
 
         try:
-            payload_data = load_data_payload(payload_path)
+            payload_data = load_data_payload(payload)
 
-            headers_data = load_header(header_path)
+            headers_data = load_header(header_path) if header_path else {}
 
-            response = requests.post(api_url,
-                                    json=payload_data,
-                                    headers=headers_data)
+            # Определение типа запроса
+            match request_type:
+                case "GET":
+                    response = requests.get(api_url,
+                                            params=payload_data,
+                                            headers=headers_data)
+                case "POST":
+                    response = requests.post(api_url,
+                                             json=payload_data,
+                                             headers=headers_data)
+                case "PUT":
+                     response = requests.put(api_url,
+                                             json=payload_data,
+                                             headers=headers_data)
+                case "PATCH":
+                     response = requests.patch(api_url,
+                                               json=payload_data,
+                                               headers=headers_data)
+
+                case _:
+                     raise ValueError(f"Unsupported request type: {request_type}")
+
+            # Обработка ответа
+            return response.text
+
+            # response = requests.post(api_url,
+            #                         json=payload_data,
+            #                         headers=headers_data)
 
             match response.status_code:
 
@@ -158,6 +181,8 @@ def send_request(api_url,
 
         except requests.RequestException as e:
             print(f"Request failed on attempt {attempt + 1}: {e}")
+
+    return "Request failed after retries."
 
 
 
