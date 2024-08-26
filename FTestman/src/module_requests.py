@@ -183,24 +183,3 @@ def send_request(api_url, payload=None, payload_path=None, header_path=None, req
             print(f"Request failed on attempt {attempt + 1}: {e}")
 
     return "Request failed after retries."
-
-
-
-
-# # Status-check
-# if response.status_code == 200:
-#     # Успешно получены данные
-#     data = response.json()  # Распаковка JSON-ответа
-#     print('Полученные данные:', data)
-# else:
-#     # Обработка ошибок
-#     print('Ошибка:', response.status_code, response.text)
-
-
-# headers = {
-#     'Content-Type': 'application/json',
-#     'Accept-Encoding': 'gzip, deflate, br',
-#     'Connection': 'keep-alive',
-#     'Accept': '*/*'
-#     # 'Authorization': 'Bearer YOUR_ACCESS_TOKEN'  # if needed
-# }
