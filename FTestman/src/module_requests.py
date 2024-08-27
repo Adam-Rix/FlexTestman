@@ -191,3 +191,4 @@ def send_request(api_url, payload=None,
             print(f"Request failed on attempt {attempt + 1}: {e}")
 
     return "Request failed after retries."
+
