@@ -18,6 +18,7 @@ class ApiTester(tk.Tk):
         self.custom_payload = tk.StringVar()
 
         self.header_path = header_path
+        self.headers_data = mr.load_header(self.header_path)
 
         self.link_to_json = link_to_json
         self.servers_data = self.load_servers(self.link_to_json)
@@ -123,9 +124,15 @@ class ApiTester(tk.Tk):
             self.response_text.insert(tk.END, "Link not found")
             return
 
+        # Debug output for the API URL and request parameters
+        # print(f"API URL: {api_url}")
+        # print(f"Request Type: {request_type}")
+        # print(f"Payload: {payload}")
+        # print(f"Headers: {self.headers_data}")
+
         # Handle the request based on the type
         response = mr.send_request(api_url, payload=payload,
-                                   header_path=self.header_path,
+                                   headers_data=self.headers_data,
                                    request_type=request_type)
 
         self.response_text.delete("1.0", tk.END)

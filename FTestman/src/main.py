@@ -5,7 +5,7 @@ def main():
 
     # CREDS
     link_to_json = 'resources/api_links.json'
-    header_path = 'resources/headers.txt'
+    header_path = 'resources/headers.json'
 
     # SEND_TO_GUI
     app = ApiTester(link_to_json=link_to_json,
