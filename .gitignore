@@ -69,3 +69,10 @@ results/
 # Profiling files
 *.prof
 .prof/
+
+# APIs
+api_links.txt
+api_links.json
+
+# Requests
+POST_payload_create.json
