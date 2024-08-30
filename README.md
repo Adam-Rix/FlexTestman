@@ -1,4 +1,4 @@
-# FlexTestman
+# FlexTestman 1.0.0
 
 FlexTestman is a tool for API testing that combines the functionalities of Postman and JMeter. The project allows you to manage API requests, configure parameters, save request history, and perform load testing.
 
